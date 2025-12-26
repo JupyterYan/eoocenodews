@@ -6,13 +6,7 @@
     <title>BlueOcean - 守护蔚蓝深海</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
         :root {
             --primary: #0077be;
             --secondary: #00a8cc;
@@ -22,335 +16,79 @@
             --text: #2c3e50;
             --white: #ffffff;
         }
+        body { background-color: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        header { background: rgba(0, 51, 102, 0.95); backdrop-filter: blur(10px); color: var(--white); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 800; letter-spacing: 1px; }
+        .logo i { color: var(--accent); font-size: 2rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2.5rem; }
+        nav ul li a { color: var(--white); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); }
 
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* 导航栏 */
-        header {
-            background: rgba(0, 51, 102, 0.95);
-            backdrop-filter: blur(10px);
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo i {
-            color: var(--accent);
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2.5rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        /* 英雄区 */
         .hero {
             background: linear-gradient(rgba(0, 20, 40, 0.7), rgba(0, 20, 40, 0.5)), 
-                        url('https://images.unsplash.com/photo-1454789415558-bdda08f4eabb?auto=format&fit=crop&w=1920&q=80');
+                        url('https://cdn.pixabay.com/photo/2017/02/08/17/24/fantasy-2049567_1280.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            height: 90vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--white);
         }
+        .hero-content { width: 100%; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1.5rem; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
+        .btn { display: inline-block; background-color: var(--secondary); color: var(--white); padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background-color: var(--accent); color: var(--dark); transform: translateY(-3px); }
 
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
+        section { padding: 5rem 0; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; }
+        .section-title h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .underline { width: 60px; height: 4px; background: var(--secondary); margin: 0 auto; border-radius: 2px; }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,168,204,0.4);
-        }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-img { border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .about-img img { width: 100%; height: auto; display: block; }
 
-        .btn:hover {
-            background-color: var(--accent);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .stat-card { background: var(--white); padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .stat-card i { font-size: 2rem; color: var(--secondary); margin-bottom: 0.8rem; }
+        .stat-card h3 { font-size: 2rem; color: var(--dark); }
 
-        /* 通用区块样式 */
-        section {
-            padding: 6rem 0;
-        }
+        .initiatives { background-color: #ffffff; }
+        .initiatives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .card { background: var(--light); border-radius: 12px; overflow: hidden; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card-img { height: 200px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .card-body { padding: 1.5rem; }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+        footer { background: var(--dark); color: var(--white); padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 2rem; margin-bottom: 2rem; }
+        .footer-links { list-style: none; }
+        .footer-links a { color: #bdc3c7; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent); }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-title .underline {
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        /* 关于我们网格 */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: 0.5s;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.08);
-        }
-
-        /* 核心数据 */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 5px solid var(--secondary);
-        }
-
-        .stat-card i {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-card h3 {
-            font-size: 2.2rem;
-            color: var(--dark);
-        }
-
-        /* 举措卡片 */
-        .initiatives {
-            background-color: #f8fdff;
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .card-img {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        .card-body h3 {
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        /* 页脚 */
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.2rem;
-            display: block;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .social-icons a:hover {
-            background: var(--secondary);
-            transform: rotate(360deg);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 8px;
-        }
-
-        /* 移动端适配 */
-        @media (max-width: 992px) {
-            .about-grid, .initiatives-grid, .stats, .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .hero h1 { font-size: 3rem; }
-        }
-
-        @media (max-width: 600px) {
-            .about-grid, .initiatives-grid, .stats, .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-        }
+        @media (max-width: 992px) { .about-grid, .initiatives-grid, .stats, .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .about-grid, .initiatives-grid, .stats, .footer-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-water"></i>
-                <span>BlueOcean</span>
-            </div>
+            <div class="logo"><i class="fas fa-water"></i><span>BlueOcean</span></div>
             <nav>
                 <ul>
                     <li><a href="#home">首页</a></li>
-                    <li><a href="#about">关于我们</a></li>
-                    <li><a href="#initiatives">环保行动</a></li>
-                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#initiatives">行动</a></li>
+                    <li><a href="#contact">联系</a></li>
                 </ul>
             </nav>
         </div>
@@ -359,8 +97,8 @@
     <section class="hero" id="home">
         <div class="container hero-content">
             <h1>让海洋再次蔚蓝</h1>
-            <p>通过科学保护、社区参与和创新技术，守护我们最后一片纯净的深蓝。</p>
-            <a href="#initiatives" class="btn">探索我们的项目</a>
+            <p>我们致力于通过创新技术与全球志愿者的力量，修复受损的珊瑚礁并减少海洋塑料污染。</p>
+            <a href="#initiatives" class="btn">立即行动</a>
         </div>
     </section>
 
@@ -368,40 +106,26 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=800&q=80" alt="海洋生物">
+                    <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=800" alt="海洋生态">
                 </div>
                 <div class="about-text">
-                    <div class="section-title" style="text-align: left;">
-                        <h2>我们的使命</h2>
+                    <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">
+                        <h2>保护最后的深蓝</h2>
                         <div class="underline" style="margin: 0;"></div>
                     </div>
-                    <p style="margin: 1.5rem 0;">BlueOcean 成立于 2015 年，是一家致力于海洋生态修复的非营利组织。我们相信每一个波浪都承载着生命的希望。</p>
-                    <p>我们的工作覆盖全球 50 多个海域，重点保护濒危珊瑚礁、清理海洋塑料垃圾，并为沿海社区提供可持续发展的解决方案。</p>
-                    <br>
-                    <a href="#" class="btn" style="background: var(--dark);">阅读白皮书</a>
-                </div>
-            </div>
-
-            <div class="stats">
-                <div class="stat-card">
-                    <i class="fas fa-trash-alt"></i>
-                    <h3 class="counter" data-target="1200">0</h3>
-                    <p>吨垃圾已清理</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-fish-icons"><i class="fas fa-fish"></i></i>
-                    <h3 class="counter" data-target="850">0</h3>
-                    <p>受保护物种</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3 class="counter" data-target="52">0</h3>
-                    <p>全球基地</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-user-friends"></i>
-                    <h3 class="counter" data-target="25000">0</h3>
-                    <p>活跃志愿者</p>
+                    <p>BlueOcean 是一家国际性的环保组织。我们不仅在清理垃圾，更在利用 3D 打印和生物技术重建海底生态系统。每一个小动作，都能产生巨大的波浪。</p>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <i class="fas fa-trash-restore"></i>
+                            <h3 class="counter" data-target="1500">0</h3>
+                            <p>吨垃圾</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-seedling"></i>
+                            <h3 class="counter" data-target="92">0</h3>
+                            <p>修复率</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -410,35 +134,35 @@
     <section class="initiatives" id="initiatives">
         <div class="container">
             <div class="section-title">
-                <h2>当前核心行动</h2>
+                <h2>我们的核心倡议</h2>
                 <div class="underline"></div>
             </div>
             <div class="initiatives-grid">
                 <div class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1546066154-05469ca0aa96?auto=format&fit=crop&w=600&q=80" alt="珊瑚修复">
+                        <img src="https://images.pexels.com/photos/3506240/pexels-photo-3506240.jpeg?auto=compress&cs=tinysrgb&w=600" alt="珊瑚修复计划">
                     </div>
                     <div class="card-body">
-                        <h3>珊瑚礁修复计划</h3>
-                        <p>利用 3D 打印技术重建珊瑚骨架，加速受损海域的生物多样性恢复。</p>
+                        <h3>珊瑚礁人工修复</h3>
+                        <p>通过人工繁育耐热珊瑚品种，我们在受损海域植入新生命，恢复生物多样性。</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=600&q=80" alt="塑料清理">
+                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80" alt="塑料清理">
                     </div>
                     <div class="card-body">
-                        <h3>净滩行动</h3>
-                        <p>定期在全球热门海滩组织志愿者清理塑料微粒，从源头切断污染。</p>
+                        <h3>海洋塑料拦截</h3>
+                        <p>在河流入海口部署智能拦截网，在塑料进入大洋前将其高效回收再利用。</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?auto=format&fit=crop&w=600&q=80" alt="教育">
+                        <img src="https://images.pexels.com/photos/1612846/pexels-photo-1612846.jpeg?auto=compress&cs=tinysrgb&w=600" alt="濒危物种保护">
                     </div>
                     <div class="card-body">
-                        <h3>蓝色教育课堂</h3>
-                        <p>为超过 1000 所学校提供海洋科普课程，播种保护海洋的种子。</p>
+                        <h3>濒危物种监测</h3>
+                        <p>利用卫星追踪和水下无人机，实时监测海龟与鲸类的迁徙路径，规避捕捞风险。</p>
                     </div>
                 </div>
             </div>
@@ -449,87 +173,57 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <span class="footer-logo"><i class="fas fa-water"></i> BlueOcean</span>
-                    <p>加入我们，一起为后代守护这片深蓝。每一份关注都是改变的力量。</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-weibo"></i></a>
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-water"></i> BlueOcean</h3>
+                    <p style="font-size: 0.9rem; color: #bdc3c7;">守护海洋，就是守护人类的未来。感谢您的关注与支持。</p>
                 </div>
                 <div>
-                    <h4>快速链接</h4>
-                    <br>
+                    <h4>链接</h4><br>
                     <ul class="footer-links">
-                        <li><a href="#">关于项目</a></li>
-                        <li><a href="#">加入成员</a></li>
-                        <li><a href="#">捐赠支持</a></li>
-                        <li><a href="#">新闻动态</a></li>
+                        <li><a href="#">支持我们</a></li>
+                        <li><a href="#">年度报告</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>资源中心</h4>
-                    <br>
+                    <h4>关注</h4><br>
                     <ul class="footer-links">
-                        <li><a href="#">研究报告</a></li>
-                        <li><a href="#">多媒体库</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">官方微信</a></li>
+                        <li><a href="#">微博动态</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>联系信息</h4>
-                    <br>
-                    <p><i class="fas fa-envelope"></i> contact@blueocean.org</p>
-                    <p><i class="fas fa-phone"></i> 400-123-4567</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 上海市浦东新区海洋路 88 号</p>
+                    <h4>联系</h4><br>
+                    <p style="font-size: 0.9rem; color: #bdc3c7;">邮箱: info@blueocean.org</p>
+                    <p style="font-size: 0.9rem; color: #bdc3c7;">电话: 400-888-9999</p>
                 </div>
             </div>
-            <p style="text-align: center; color: #7f8c8d; font-size: 0.9rem;">&copy; 2025 BlueOcean 保护海洋组织. 保留所有权利.</p>
+            <p style="text-align: center; color: #7f8c8d; font-size: 0.8rem; border-top: 1px solid #34495e; padding-top: 2rem;">&copy; 2025 BlueOcean Project. 保留所有权利。</p>
         </div>
     </footer>
 
     <script>
         // 数字滚动动画
         const counters = document.querySelectorAll('.counter');
-        const speed = 150;
-
-        const startCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
-        };
-
-        // 简单的交叉观察者，当滚动到数据区域时才开始动画
+        const speed = 100;
         const observer = new IntersectionObserver((entries) => {
             if(entries[0].isIntersecting) {
-                startCounters();
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
                 observer.disconnect();
             }
         });
         observer.observe(document.querySelector('.stats'));
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
